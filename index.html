@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Eczaneler</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        #map {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 70%;
+        }
+        #locationList {
+            position: absolute;
+            left: 0;
+            top: 50px;
+            width: 30%;
+            height: 90%;
+            overflow: auto;
+            padding: 10px;
+            border-right: 1px solid #000;
+            box-sizing: border-box;
+        }
+        #searchInput {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .locationItem {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .locationTitle {
+            font-weight: bold;
+            text-decoration: none;
+            color: #000;
+        }
+        .locationAddress {
+            font-style: italic;
+            color: #666;
+        }
+        .locationInfo {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="searchInput" placeholder="Eczane Ara..."/>
+    <div id='locationList'></div>
+    <div id='map'></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaGFmc2ExMzE5IiwiYSI6ImNsaWJndTV4cjBka2szZm11ZzhzenU3Z28ifQ.IMb9YxnMZHDgziP_Qivxug';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [28.9784, 41.0082], // İstanbul
+            zoom: 10
+        });
+
+        var locations = [
+            {name: 'Web Eczane 1', coordinates: [28.9784, 41.0082], address: 'Ahmet Yesevi, Mücahit Cd. No:51, 34930 Sultanbeyli/İstanbul', additionalInfo: 'İstanbul - Hale Eczanesi (02165929096)'},
+            {name: 'Web Eczane 2', coordinates: [29.0184, 41.0282], address: 'Ahmet Yesevi, Mücahit Cd. No:51, 34930 Sultanbeyli/İstanbul', additionalInfo: 'İstanbul - Hale Eczanesi (02165929096)'},
+            {name: 'Web Eczane 3', coordinates: [29.0584, 41.0482], address: 'Ahmet Yesevi, Mücahit Cd. No:51, 34930 Sultanbeyli/İstanbul', additionalInfo: 'İstanbul - Hale Eczanesi (02165929096)'}
+        ];
+
+        $(document).ready(function() {
+            locations.forEach(function(location, index) {
+                var el = document.createElement('div');
+                el.className = 'marker';
+
+                var marker = new mapboxgl.Marker(el)
+                    .setLngLat(location.coordinates)
+                    .setPopup(new mapboxgl.Popup({ offset: 25 }) 
+                    .setHTML('<h3>' + location.name + '</h3><p>' + location.address + '</p>'))
+                    .addTo(map);
+
+                $('#locationList').append('<div id="location_' + index + '" class="locationItem"><a href="#" class="locationTitle">' + location.name + '</a><div class="locationAddress">' + location.address + '</div><div class="locationInfo">' + location.additionalInfo + '</div></div>');
+
+                $('#location_' + index).on('click', function(e) {
+                    e.preventDefault();
+                    map.flyTo({center: location.coordinates, zoom: 14});
+                    marker.togglePopup();
+                });
+            });
+
+            $("#searchInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#locationList .locationItem").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+    <style>
+        .marker {
+            background-color: #f00;
+            border-radius: 50%;
+            cursor: pointer;
+            height: 20px;
+            width: 20px;
+        }
+    </style>
+</body>
+</html>
