@@ -73,6 +73,16 @@
             {name: 'Yelda Eczanesi', coordinates: [33.033053183608175, 40.23815345127304], address: 'Yıldırım Beyazıt, Ankara Blv. No:3/a, 06760 Çubuk/Ankara', additionalInfo: 'Ankara - Yelda Eczanesi (03128386238)'},
             {name: 'Marmara Eczanesi', coordinates: [28.676131383857772, 40.9784127076065], address: 'Marmara, Önder Cd., 34524 Beylikdüzü/İstanbul', additionalInfo: 'İstanbul - Marmara Eczanesi (02129999571)'},
             {name: 'Yeşim Eczanesi', coordinates: [28.98358242781816, 41.0394752328819], address: 'Greenpark Otel altı, Kocatepe Mah Abdülhak Hamit Caddesi, Talimhane Sk. No:32/A, 34045 Beyoğlu/İstanbul', additionalInfo: 'İstanbul - Yeşim Eczanesi (03128386238)'},
+            {name: 'Ebruli Eczanesi', coordinates: [28.83086254130879, 40.99871686866966], address: 'Fevzi Çakmak, Fatih Cd. 26/A, 34194 Bahçelievler/İstanbul', additionalInfo: 'İstanbul - Ebruli Eczanesi (03128386238)'},
+            {name: 'Baylan Eczanesi', coordinates: [28.77266981894872, 41.11758083417317], address: 'Kayabaşı, 34494 Başakşehir/İstanbul', additionalInfo: 'İstanbul - Baylan Eczanesi (0534 237 21 63)'},
+            {name: 'Filizsu Eczanesi', coordinates: [32.722603139418425, 39.967264585051964], address: 'Kentkoop, 1855. Sk. No:2, 06370 Yenimahalle/Ankara', additionalInfo: 'Ankara - Filizsu Eczanesi (0312 252 30 40)'},
+            {name: 'Seçkin Eczanesi', coordinates: [29.323247728820512, 40.92832356629729], address: 'Harmandere, Emir Sultan Cd. no 16, 34890 Pendik/İstanbul', additionalInfo: 'İstanbul - Seçkin Eczanesi (0212 463 39 29)'},
+            {name: 'Ebruli Eczanesi', coordinates: [28.83086254130879, 40.99871686866966], address: 'Fevzi Çakmak, Fatih Cd. 26/A, 34194 Bahçelievler/İstanbul', additionalInfo: 'İstanbul - Ebruli Eczanesi (03128386238)'},
+            {name: 'Ebruli Eczanesi', coordinates: [28.83086254130879, 40.99871686866966], address: 'Fevzi Çakmak, Fatih Cd. 26/A, 34194 Bahçelievler/İstanbul', additionalInfo: 'İstanbul - Ebruli Eczanesi (03128386238)'},
+            {name: 'Ebruli Eczanesi', coordinates: [28.83086254130879, 40.99871686866966], address: 'Fevzi Çakmak, Fatih Cd. 26/A, 34194 Bahçelievler/İstanbul', additionalInfo: 'İstanbul - Ebruli Eczanesi (03128386238)'},
+            {name: 'Ebruli Eczanesi', coordinates: [28.83086254130879, 40.99871686866966], address: 'Fevzi Çakmak, Fatih Cd. 26/A, 34194 Bahçelievler/İstanbul', additionalInfo: 'İstanbul - Ebruli Eczanesi (03128386238)'},
+            {name: 'Ebruli Eczanesi', coordinates: [28.83086254130879, 40.99871686866966], address: 'Fevzi Çakmak, Fatih Cd. 26/A, 34194 Bahçelievler/İstanbul', additionalInfo: 'İstanbul - Ebruli Eczanesi (03128386238)'},
+            {name: 'Ebruli Eczanesi', coordinates: [28.83086254130879, 40.99871686866966], address: 'Fevzi Çakmak, Fatih Cd. 26/A, 34194 Bahçelievler/İstanbul', additionalInfo: 'İstanbul - Ebruli Eczanesi (03128386238)'},
             {name: 'Ebruli Eczanesi', coordinates: [28.83086254130879, 40.99871686866966], address: 'Fevzi Çakmak, Fatih Cd. 26/A, 34194 Bahçelievler/İstanbul', additionalInfo: 'İstanbul - Ebruli Eczanesi (03128386238)'}
         ];
 
@@ -80,6 +90,7 @@
             locations.forEach(function(location, index) {
                 var el = document.createElement('div');
                 el.className = 'marker';
+               
 
                 var marker = new mapboxgl.Marker(el)
                     .setLngLat(location.coordinates)
